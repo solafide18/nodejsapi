@@ -19,9 +19,5 @@
     "mysql-model": "0.0.3",
     "mysql2": "^1.7.0",
     "sequelize": "^5.18.2"
-  },
-  "engines": {
-    "node": "10.15.3",
-    "npm": "6.4.1"
   }
 }
