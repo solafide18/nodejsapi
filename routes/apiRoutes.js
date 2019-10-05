@@ -3,9 +3,14 @@ module.exports=function(app){
     var user = require('../controllers/userController');
     var login = require('../controllers/loginController');
     var crypto = require('../Function/crypto');
+    var mdw = require('./middleware');
+
+    app.route('/login/auth')
+        .post(login.auth);
     app.route('/').get((req,res)=>{
         return res.send('Api Started');
     });
+    app.use(mdw);
     app.route('/test')
         .get((req,res)=>{return res.send('api/test route is work');})
         .post((req,res)=>{return res.json(req.body);});
@@ -25,10 +30,10 @@ module.exports=function(app){
         .get(user.test);
     app.route('/user/all')
         .get(user.test);
+    app.route('/user/:id/find')
+        .get(user.find);
     app.route('/user/add')
         .post(user.addUser);
-    app.route('/login/auth')
-        .post(login.auth);
     app.route('/login/verify')
         .post(login.verify);
 }
